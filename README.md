@@ -43,7 +43,7 @@ Requires **Python 3.9+**.
 
 ```bash
 #1. Clone the repo
-git clone <repo-url>
+git clone https://github.com/PawelSitko/CoachAi.git
 cd coachai
 
 # 2. (Recommended) create a virtual environment
