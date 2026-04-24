@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoachAI &mdash; Personalised S&amp;C Plans</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <!-- ===================== LANDING SCREEN ===================== -->
+    <div id="screen-landing">
+        <header class="hero">
+            <h1>CoachAI</h1>
+            <p class="hero-sub">Sport-specific strength &amp; conditioning</p>
+        </header>
+
+        <main class="landing-main">
+            <p class="landing-intro">
+                Get a personalised weekly gym programme built around your sport,
+                position and goals &mdash; not a generic workout.
+            </p>
+
+            <div class="sport-pills">
+                <span class="pill">&#127944; Volleyball</span>
+                <span class="pill">&#127936; Basketball</span>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature">
+                    <span class="feature-icon">&#127919;</span>
+                    <div>
+                        <strong>Position-aware</strong>
+                        <p>Middle blockers train differently to setters. Your plan reflects that.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">&#127947;</span>
+                    <div>
+                        <strong>Equipment-adaptive</strong>
+                        <p>Full gym, dumbbells, or bodyweight &mdash; your plan works with what you have.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">&#9989;</span>
+                    <div>
+                        <strong>Evidence-based</strong>
+                        <p>Built on published S&amp;C research, not generic fitness advice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="get-started-btn" class="btn-primary btn-large">Get started</button>
+        </main>
+    </div>
+
+    <!-- ===================== FORM SCREEN (multi-step) ===================== -->
+    <div id="screen-form" class="hidden">
+        <header class="app-header">
+            <h1>CoachAI</h1>
+            <p class="tagline">Sport-specific strength &amp; conditioning</p>
+        </header>
+
+        <main>
+            <!-- Progress bar -->
+            <div class="progress-wrap">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-label" id="progress-label">Step 1 of 3</span>
+            </div>
+
+            <div class="card">
+                <!-- Step 1: Sport + Position -->
+                <div class="step" id="step-1">
+                    <h2>Your sport</h2>
+                    <p class="muted">Tell us what you play.</p>
+
+                    <label for="sport">Sport</label>
+                    <select id="sport">
+                        <option value="volleyball">Volleyball</option>
+                        <option value="basketball">Basketball</option>
+                    </select>
+
+                    <label for="position">Playing position</label>
+                    <select id="position"></select>
+
+                    <button class="btn-primary step-next" data-next="2">Next &rarr;</button>
+                </div>
+
+                <!-- Step 2: Goal + Equipment -->
+                <div class="step hidden" id="step-2">
+                    <h2>Your training</h2>
+                    <p class="muted">What are you training for?</p>
+
+                    <label for="goal">Primary goal</label>
+                    <select id="goal">
+                        <option value="vertical_jump">Increase vertical jump</option>
+                        <option value="explosive_power">Build explosive power</option>
+                        <option value="general_strength">General strength</option>
+                        <option value="injury_prevention">Injury prevention</option>
+                        <option value="agility">Improve agility</option>
+                    </select>
+
+                    <label for="equipment">Available equipment</label>
+                    <select id="equipment">
+                        <option value="full_gym">Full gym</option>
+                        <option value="dumbbells">Dumbbells only</option>
+                        <option value="bodyweight">Bodyweight only</option>
+                    </select>
+
+                    <div class="step-nav">
+                        <button class="btn-secondary step-back" data-back="1">&larr; Back</button>
+                        <button class="btn-primary step-next" data-next="3">Next &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Confirm + Generate -->
+                <div class="step hidden" id="step-3">
+                    <h2>Ready to generate</h2>
+                    <p class="muted">Your profile summary:</p>
+
+                    <div class="summary-card">
+                        <div class="summary-row"><span>Sport</span><strong id="sum-sport"></strong></div>
+                        <div class="summary-row"><span>Position</span><strong id="sum-position"></strong></div>
+                        <div class="summary-row"><span>Goal</span><strong id="sum-goal"></strong></div>
+                        <div class="summary-row"><span>Equipment</span><strong id="sum-equipment"></strong></div>
+                    </div>
+
+                    <div class="step-nav">
+                        <button class="btn-secondary step-back" data-back="2">&larr; Back</button>
+                        <button class="btn-primary" id="generate-btn">&#9889; Generate plan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error-banner" class="error hidden"></div>
+        </main>
+    </div>
+
+    <!-- ===================== PLAN SCREEN ===================== -->
+    <div id="screen-plan" class="hidden">
+        <header class="app-header">
+            <h1>CoachAI</h1>
+            <p class="tagline">Sport-specific strength &amp; conditioning</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <button id="back-btn" class="link-btn">&#8592; Edit profile</button>
+                <h2 id="plan-title">Your weekly plan</h2>
+                <p id="plan-summary" class="muted"></p>
+                <div id="plan-position" class="position-note hidden"></div>
+            </div>
+
+            <!-- Session complete tracker -->
+            <div class="progress-tracker card">
+                <p class="tracker-label">Weekly progress</p>
+                <div id="tracker-dots"></div>
+            </div>
+
+            <div id="sessions"></div>
+
+            <!-- Action buttons -->
+            <div class="plan-actions">
+                <button id="print-btn" class="btn-secondary">&#128438; Print / save plan</button>
+            </div>
+
+            <!-- Feedback form -->
+            <div class="card feedback-card" id="feedback-section">
+                <h3>&#128203; Rate this plan</h3>
+                <p class="muted">Takes 30 seconds &mdash; helps improve CoachAI.</p>
+
+                <div class="rating-group">
+                    <label>How clear and easy to follow was this plan?</label>
+                    <div class="stars" id="stars-clarity" data-key="clarity"></div>
+                    <p class="rating-hint hidden" id="hint-clarity"></p>
+                </div>
+
+                <div class="rating-group">
+                    <label>How sport-specific did this feel compared to a generic workout?</label>
+                    <div class="stars" id="stars-sport" data-key="sport"></div>
+                    <p class="rating-hint hidden" id="hint-sport"></p>
+                </div>
+
+                <div class="rating-group">
+                    <label>Any comments? <span class="optional">(optional)</span></label>
+                    <textarea id="feedback-comment" rows="3" placeholder="What worked, what could be better..."></textarea>
+                </div>
+
+                <button id="submit-feedback-btn" class="btn-primary">Submit feedback</button>
+                <div id="feedback-thanks" class="feedback-thanks hidden">
+                    &#127881; Thanks for your feedback! This helps evaluate CoachAI.
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <small>CoachAI prototype &bull; Pawel Sitko &bull; Goldsmiths Final Year Project</small>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

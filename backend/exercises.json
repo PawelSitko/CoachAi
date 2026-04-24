@@ -1,0 +1,56 @@
+{
+  "exercises": [
+    { "id": "back_squat", "name": "Back Squat", "category": "lower_strength", "equipment": "full_gym", "primary": ["legs", "glutes"], "sport_tags": ["volleyball", "basketball"], "notes": "Drive through mid-foot, keep chest tall." },
+    { "id": "front_squat", "name": "Front Squat", "category": "lower_strength", "equipment": "full_gym", "primary": ["quads", "core"], "sport_tags": ["volleyball", "basketball"], "notes": "Elbows high, control the descent." },
+    { "id": "trap_bar_dl", "name": "Trap-Bar Deadlift", "category": "lower_power", "equipment": "full_gym", "primary": ["posterior_chain", "glutes"], "sport_tags": ["volleyball", "basketball"], "notes": "Stand tall, push the floor away." },
+    { "id": "rdl_db", "name": "Dumbbell Romanian Deadlift", "category": "lower_strength", "equipment": "dumbbells", "primary": ["hamstrings", "glutes"], "sport_tags": ["volleyball", "basketball"], "notes": "Hinge at the hips, soft knees." },
+    { "id": "bulgarian_split", "name": "Bulgarian Split Squat", "category": "lower_strength", "equipment": "dumbbells", "primary": ["quads", "glutes"], "sport_tags": ["volleyball", "basketball"], "notes": "Keep front shin near vertical." },
+    { "id": "walking_lunge", "name": "Walking Lunge", "category": "lower_strength", "equipment": "bodyweight", "primary": ["legs"], "sport_tags": ["volleyball", "basketball"], "notes": "Long stride, controlled tempo." },
+    { "id": "goblet_squat", "name": "Goblet Squat", "category": "lower_strength", "equipment": "dumbbells", "primary": ["legs"], "sport_tags": ["volleyball", "basketball"], "notes": "Great for beginners learning depth." },
+    { "id": "reverse_lunge_bw", "name": "Bodyweight Reverse Lunge", "category": "lower_strength", "equipment": "bodyweight", "primary": ["legs", "glutes"], "sport_tags": ["volleyball", "basketball"], "notes": "Step back, drop back knee, drive through front heel." },
+    { "id": "single_leg_glute_bridge", "name": "Single-Leg Glute Bridge", "category": "lower_strength", "equipment": "bodyweight", "primary": ["glutes", "hamstrings"], "sport_tags": ["volleyball", "basketball"], "notes": "Squeeze the glute hard at the top." },
+    { "id": "step_up_bw", "name": "Bodyweight Step-Up", "category": "lower_strength", "equipment": "bodyweight", "primary": ["legs", "glutes"], "sport_tags": ["volleyball", "basketball"], "notes": "Use a sturdy chair or bench. No push-off from the back foot." },
+    { "id": "cossack_squat", "name": "Cossack Squat", "category": "lower_strength", "equipment": "bodyweight", "primary": ["legs", "adductors"], "sport_tags": ["volleyball", "basketball"], "notes": "Shift side to side, keep heels down." },
+    { "id": "single_leg_rdl_bw", "name": "Single-Leg Romanian Deadlift (BW)", "category": "lower_strength", "equipment": "bodyweight", "primary": ["hamstrings", "glutes", "balance"], "sport_tags": ["volleyball", "basketball"], "notes": "Hinge at the hip, free leg straight back." },
+    { "id": "wall_sit", "name": "Wall Sit", "category": "lower_strength", "equipment": "bodyweight", "primary": ["quads"], "sport_tags": ["volleyball", "basketball"], "notes": "90\u00b0 at knees and hips. Hold." },
+
+    { "id": "depth_jump", "name": "Depth Jump", "category": "plyometric", "equipment": "dumbbells", "primary": ["lower_power"], "sport_tags": ["volleyball", "basketball"], "notes": "Step off box, jump immediately on landing. Quality over quantity. Requires a box or sturdy bench." },
+    { "id": "box_jump", "name": "Box Jump", "category": "plyometric", "equipment": "dumbbells", "primary": ["lower_power"], "sport_tags": ["volleyball", "basketball"], "notes": "Step down, do not jump down. Requires a box or sturdy bench." },
+    { "id": "broad_jump", "name": "Standing Broad Jump", "category": "plyometric", "equipment": "bodyweight", "primary": ["lower_power"], "sport_tags": ["volleyball", "basketball"], "notes": "Full extension, stick the landing." },
+    { "id": "approach_jump", "name": "Approach Jump (3-step)", "category": "plyometric", "equipment": "bodyweight", "primary": ["vertical_jump"], "sport_tags": ["volleyball"], "notes": "Mimic spike approach, max height each rep." },
+    { "id": "tuck_jump", "name": "Tuck Jump", "category": "plyometric", "equipment": "bodyweight", "primary": ["lower_power"], "sport_tags": ["volleyball", "basketball"], "notes": "Knees to chest, minimal ground contact." },
+    { "id": "pogo_jump", "name": "Pogo Jumps", "category": "plyometric", "equipment": "bodyweight", "primary": ["calves", "stiffness"], "sport_tags": ["volleyball", "basketball"], "notes": "Stiff ankles, fast off the ground." },
+    { "id": "lateral_bound", "name": "Lateral Bound", "category": "plyometric", "equipment": "bodyweight", "primary": ["lateral_power"], "sport_tags": ["basketball"], "notes": "Push off outside leg, stick landing." },
+    { "id": "skater_jump", "name": "Skater Jumps", "category": "plyometric", "equipment": "bodyweight", "primary": ["lateral_power"], "sport_tags": ["basketball"], "notes": "Land balanced, control momentum." },
+
+    { "id": "bench_press", "name": "Bench Press", "category": "upper_push", "equipment": "full_gym", "primary": ["chest", "triceps"], "sport_tags": ["volleyball", "basketball"], "notes": "Shoulder blades pinned, control the bar." },
+    { "id": "db_bench", "name": "Dumbbell Bench Press", "category": "upper_push", "equipment": "dumbbells", "primary": ["chest"], "sport_tags": ["volleyball", "basketball"], "notes": "Equal range each side." },
+    { "id": "ohp", "name": "Overhead Press", "category": "upper_push", "equipment": "full_gym", "primary": ["shoulders"], "sport_tags": ["volleyball", "basketball"], "notes": "Brace core, press straight overhead." },
+    { "id": "db_shoulder", "name": "Dumbbell Shoulder Press", "category": "upper_push", "equipment": "dumbbells", "primary": ["shoulders"], "sport_tags": ["volleyball", "basketball"], "notes": "Neutral grip is shoulder-friendly." },
+    { "id": "pushup", "name": "Push-Up", "category": "upper_push", "equipment": "bodyweight", "primary": ["chest", "core"], "sport_tags": ["volleyball", "basketball"], "notes": "Body in a straight line." },
+
+    { "id": "pullup", "name": "Pull-Up", "category": "upper_pull", "equipment": "full_gym", "primary": ["lats", "biceps"], "sport_tags": ["volleyball", "basketball"], "notes": "Full range, no kipping." },
+    { "id": "db_row", "name": "Dumbbell Row", "category": "upper_pull", "equipment": "dumbbells", "primary": ["back"], "sport_tags": ["volleyball", "basketball"], "notes": "Drive elbow to hip." },
+    { "id": "barbell_row", "name": "Barbell Row", "category": "upper_pull", "equipment": "full_gym", "primary": ["back"], "sport_tags": ["volleyball", "basketball"], "notes": "Hinge to ~45\u00b0, neutral spine." },
+    { "id": "face_pull", "name": "Face Pull", "category": "upper_pull", "equipment": "full_gym", "primary": ["rear_delts"], "sport_tags": ["volleyball", "basketball"], "notes": "Critical for shoulder health in overhead athletes." },
+    { "id": "inverted_row", "name": "Inverted Row", "category": "upper_pull", "equipment": "bodyweight", "primary": ["back"], "sport_tags": ["volleyball", "basketball"], "notes": "Body straight, pull chest to bar." },
+
+    { "id": "plank", "name": "Front Plank", "category": "core", "equipment": "bodyweight", "primary": ["core"], "sport_tags": ["volleyball", "basketball"], "notes": "Squeeze glutes, no hip sag." },
+    { "id": "side_plank", "name": "Side Plank", "category": "core", "equipment": "bodyweight", "primary": ["obliques"], "sport_tags": ["volleyball", "basketball"], "notes": "Stack hips and shoulders." },
+    { "id": "pallof_press", "name": "Pallof Press", "category": "core", "equipment": "full_gym", "primary": ["anti_rotation"], "sport_tags": ["volleyball", "basketball"], "notes": "Resist the rotation \u2014 that's the point." },
+    { "id": "deadbug", "name": "Dead Bug", "category": "core", "equipment": "bodyweight", "primary": ["core"], "sport_tags": ["volleyball", "basketball"], "notes": "Lower back stays glued to floor." },
+    { "id": "hanging_leg_raise", "name": "Hanging Leg Raise", "category": "core", "equipment": "full_gym", "primary": ["abs"], "sport_tags": ["volleyball", "basketball"], "notes": "Control the swing." },
+
+    { "id": "med_ball_slam", "name": "Medicine Ball Slam", "category": "power", "equipment": "full_gym", "primary": ["full_body_power"], "sport_tags": ["volleyball", "basketball"], "notes": "Full extension overhead, slam down hard." },
+    { "id": "rotational_throw", "name": "Rotational Med Ball Throw", "category": "power", "equipment": "full_gym", "primary": ["rotational_power"], "sport_tags": ["volleyball", "basketball"], "notes": "Drive from the hips." },
+
+    { "id": "calf_raise", "name": "Calf Raise", "category": "accessory", "equipment": "bodyweight", "primary": ["calves"], "sport_tags": ["volleyball", "basketball"], "notes": "Pause at the top." },
+    { "id": "nordic_curl", "name": "Nordic Hamstring Curl", "category": "accessory", "equipment": "dumbbells", "primary": ["hamstrings"], "sport_tags": ["volleyball", "basketball"], "notes": "Lower as slowly as possible \u2014 huge for injury prevention. Anchor feet under a barbell or bench." },
+    { "id": "copenhagen", "name": "Copenhagen Plank", "category": "accessory", "equipment": "bodyweight", "primary": ["adductors"], "sport_tags": ["volleyball", "basketball"], "notes": "Builds groin resilience." },
+    { "id": "ankle_hops", "name": "Ankle Hops", "category": "accessory", "equipment": "bodyweight", "primary": ["calves", "stiffness"], "sport_tags": ["volleyball", "basketball"], "notes": "Light, springy, minimal contact time." },
+
+    { "id": "lateral_shuffle", "name": "Lateral Shuffle", "category": "agility", "equipment": "bodyweight", "primary": ["agility"], "sport_tags": ["basketball"], "notes": "Stay low in defensive stance." },
+    { "id": "cone_drill", "name": "5-10-5 Pro Agility", "category": "agility", "equipment": "bodyweight", "primary": ["change_of_direction"], "sport_tags": ["basketball"], "notes": "Plant outside foot, drive the opposite way." },
+    { "id": "defensive_slide", "name": "Defensive Slide", "category": "agility", "equipment": "bodyweight", "primary": ["agility"], "sport_tags": ["basketball"], "notes": "Hips low, no crossover." }
+  ]
+}
