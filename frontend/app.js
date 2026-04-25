@@ -1,7 +1,7 @@
-// CoachAI — frontend logic
-// Screens: landing → multi-step form → plan view
+//CoachAI — frontend logic
+//Screens: landing → multi-step form → plan view
 
-// ─── Position data ───────────────────────────────────────────────────────────
+//Position data
 const POSITIONS = {
     volleyball: [
         ["middle_blocker", "Middle blocker"],
@@ -33,7 +33,7 @@ const EQUIPMENT_LABELS = {
 
 const STAR_HINTS = ["Poor", "Fair", "Good", "Very good", "Excellent"];
 
-// ─── Element refs ─────────────────────────────────────────────────────────────
+//Element refs
 const screens = {
     landing: document.getElementById("screen-landing"),
     form:    document.getElementById("screen-form"),
@@ -49,7 +49,7 @@ const errorEl     = document.getElementById("error-banner");
 const backBtn     = document.getElementById("back-btn");
 const printBtn    = document.getElementById("print-btn");
 
-// ─── Screen transitions ───────────────────────────────────────────────────────
+//Screen transitions
 function showScreen(name) {
     Object.values(screens).forEach(s => s.classList.add("hidden"));
     screens[name].classList.remove("hidden");
@@ -60,7 +60,7 @@ document.getElementById("get-started-btn").addEventListener("click", () => showS
 backBtn.addEventListener("click", () => showScreen("form"));
 printBtn.addEventListener("click", () => window.print());
 
-// ─── Multi-step form ──────────────────────────────────────────────────────────
+//Multi-step form
 const TOTAL_STEPS = 3;
 let currentStep = 1;
 
@@ -72,7 +72,7 @@ function showStep(n) {
     document.getElementById("progress-label").textContent = `Step ${n} of ${TOTAL_STEPS}`;
     currentStep = n;
 
-    // Populate summary on step 3
+    //Populate summary on step 3
     if (n === 3) populateSummary();
 }
 
@@ -83,7 +83,7 @@ document.querySelectorAll(".step-back").forEach(btn => {
     btn.addEventListener("click", () => showStep(parseInt(btn.dataset.back)));
 });
 
-// ─── Position dropdown ────────────────────────────────────────────────────────
+//Position dropdown
 function populatePositions() {
     const sport = sportEl.value;
     positionEl.innerHTML = "";
@@ -97,7 +97,7 @@ function populatePositions() {
 sportEl.addEventListener("change", populatePositions);
 populatePositions();
 
-// ─── Summary (step 3) ─────────────────────────────────────────────────────────
+//Summary (step 3)
 function titleCase(s) {
     return s.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 }
@@ -110,7 +110,7 @@ function populateSummary() {
     document.getElementById("sum-equipment").textContent = EQUIPMENT_LABELS[equipmentEl.value] || titleCase(equipmentEl.value);
 }
 
-// ─── Generate plan ────────────────────────────────────────────────────────────
+//Generate plan
 generateBtn.addEventListener("click", async () => {
     errorEl.classList.add("hidden");
     generateBtn.disabled = true;
@@ -145,7 +145,7 @@ generateBtn.addEventListener("click", async () => {
     }
 });
 
-// ─── Render plan ──────────────────────────────────────────────────────────────
+//Render plan 
 function renderPlan(plan) {
     document.getElementById("plan-title").textContent =
         `Weekly plan — ${titleCase(plan.sport)} (${titleCase(plan.position)})`;
@@ -159,7 +159,7 @@ function renderPlan(plan) {
         posNote.classList.add("hidden");
     }
 
-    // Tracker dots
+    //Tracker dots
     const dotsEl = document.getElementById("tracker-dots");
     dotsEl.innerHTML = "";
     plan.sessions.forEach((_, i) => {
@@ -170,7 +170,7 @@ function renderPlan(plan) {
         dotsEl.appendChild(dot);
     });
 
-    // Sessions
+    //Sessions
     const sessionsEl = document.getElementById("sessions");
     sessionsEl.innerHTML = "";
     plan.sessions.forEach((session, i) => {
@@ -197,7 +197,7 @@ function renderPlan(plan) {
         header.appendChild(completeBtn);
         wrap.appendChild(header);
 
-        // Exercises
+        //Exercises
         session.exercises.forEach(ex => {
             const exDiv = document.createElement("div");
             exDiv.className = "exercise";
@@ -216,11 +216,11 @@ function renderPlan(plan) {
         sessionsEl.appendChild(wrap);
     });
 
-    // Reset feedback
+    //Reset feedback
     resetFeedback();
 }
 
-// ─── Mark session complete ────────────────────────────────────────────────────
+// Mark session complete 
 const completedSessions = new Set();
 
 function toggleComplete(index, card, btn) {
@@ -243,7 +243,7 @@ function toggleComplete(index, card, btn) {
     });
 }
 
-// ─── Feedback / star ratings ──────────────────────────────────────────────────
+//Feedback / star ratings
 const ratings = { clarity: 0, sport: 0 };
 
 function buildStars(containerId, key) {
@@ -290,7 +290,7 @@ function resetFeedback() {
 
 document.getElementById("submit-feedback-btn").addEventListener("click", () => {
     const comment = document.getElementById("feedback-comment").value.trim();
-    // Log to console (can be wired to a backend endpoint later)
+    //Log to console (can be wired to a backend endpoint later)
     console.log("CoachAI feedback:", {
         clarity: ratings.clarity,
         sport_specificity: ratings.sport,
@@ -306,7 +306,7 @@ document.getElementById("submit-feedback-btn").addEventListener("click", () => {
     document.getElementById("feedback-thanks").classList.remove("hidden");
 });
 
-// ─── Init ─────────────────────────────────────────────────────────────────────
+//Init
 buildStars("stars-clarity", "clarity");
 buildStars("stars-sport", "sport");
 showStep(1);
