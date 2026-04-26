@@ -9,7 +9,6 @@ Markovic 2007; Sheppard & Gabbett 2009).
 
 import json
 import os
-import random
 from typing import List, Dict
 
 EXERCISE_PATH = os.path.join(os.path.dirname(__file__), "exercises.json")
@@ -28,7 +27,7 @@ def _allowed(ex: dict, equipment: str) -> bool:
     return EQUIPMENT_RANK[ex["equipment"]] <= EQUIPMENT_RANK[equipment]
 
 
-def _filter(category: str, sport: str, equipment: str, exclude: set = None) -> List[dict]:
+def _filter(category: str, sport: str, equipment: str, exclude: set = None) -> List[dict]: # type: ignore
     """Return exercises in a category that match the sport, kit, and haven't been used yet."""
     exclude = exclude or set()
     return [
@@ -40,7 +39,7 @@ def _filter(category: str, sport: str, equipment: str, exclude: set = None) -> L
     ]
 
 
-def _pick(category: str, sport: str, equipment: str, n: int = 1, used: set = None) -> List[dict]:
+def _pick(category: str, sport: str, equipment: str, n: int = 1, used: set = None) -> List[dict]: # type: ignore
     """Pick n unique exercises from a category, skipping any already in `used`."""
     pool = _filter(category, sport, equipment, exclude=used)
     if not pool:

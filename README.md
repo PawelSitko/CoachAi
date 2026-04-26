@@ -12,14 +12,18 @@ rule-based recommender grounded in published S&amp;C literature.
 
 ## Core features implemented
 
-- Single-page mobile-first web UI (HTML5, CSS3, vanilla JS)
-- Profile form: sport, position (auto-updates per sport), goal, equipment
+- Landing screen with value proposition and sport/feature overview
+- 3-step profile form: sport &amp; position → goal &amp; equipment → confirm summary
 - Flask + Python REST API (`POST /api/generate-plan`)
 - Rule-based recommender engine with a curated 40+ exercise database
-- Equipment-aware filtering (full gym &gt; dumbbells &gt; bodyweight)
-- Sport- and position-aware coaching notes
-- 5-day weekly plan output: lower power, upper, lower strength, power/agility, core
-- Goal-driven adjustments (e.g. extra plyometric block when the goal is vertical jump)
+- Equipment-aware filtering (full gym > dumbbells > bodyweight) — no gym equipment shown for bodyweight users
+- Sport- and position-aware coaching notes on every plan
+- 5-day weekly plan output: lower power, upper strength, lower strength, power/agility, core
+- Goal-driven adjustments (e.g. extra plyometric block for vertical jump goal)
+- Mark session complete buttons with weekly progress tracker
+- In-app feedback form with 1–5 star ratings for clarity and sport-specificity
+- Print / save plan button for gym use
+- Mobile-first responsive design, accessible from phone on same Wi-Fi
 
 ## Project structure
 
@@ -59,7 +63,7 @@ cd backend
 python app.py
 ```
 
-Then open **http://localhost:5000** in your browser
+Then open **http://localhost:5001** in your browser
 (or on your phone if it&rsquo;s on the same Wi-Fi: `http://<your-laptop-ip>:5000`).
 
 ## How to use
