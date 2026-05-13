@@ -44,7 +44,7 @@ def _pick(category: str, sport: str, equipment: str, n: int = 1, used: set = Non
     pool = _filter(category, sport, equipment, exclude=used)
     if not pool:
         return []
-    # Stable sort so picks are deterministic for the same inputs.
+    #Stable sort so picks are deterministic for the same inputs.
     pool.sort(key=lambda e: e["id"])
     picked = pool[:n]
     if used is not None:
