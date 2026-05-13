@@ -12,9 +12,21 @@ import os
 from typing import List, Dict
 
 EXERCISE_PATH = os.path.join(os.path.dirname(__file__), "exercises.json")
+TIERED_NOTES_PATH = os.path.join(os.path.dirname(__file__), "coaching_notes_tiered.json")
 
 with open(EXERCISE_PATH, "r") as f:
     EXERCISES = {ex["id"]: ex for ex in json.load(f)["exercises"]}
+
+
+# Cycle 2: optional tiered coaching notes authored at dev-time by Gemini and
+# cached as a static JSON file (see build_tiered_notes.py). Loaded if present;
+# absence is fine and means beginner_friendly mode silently falls back to the
+# default coaching note.
+try:
+    with open(TIERED_NOTES_PATH, "r") as f:
+        TIERED_NOTES = json.load(f)
+except FileNotFoundError:
+    TIERED_NOTES = {}
 
 
 #Equipment is hierarchical: full_gym > dumbbells > bodyweight.
@@ -65,14 +77,24 @@ def _session(name: str, focus: str, blocks: List[Dict]) -> Dict:
     return {"name": name, "focus": focus, "exercises": blocks}
 
 
+# Module-level flag set inside generate_plan() (single-threaded Flask dev server,
+# so a simple global is sufficient — keeps the 20+ call sites of _block unchanged).
+_BEGINNER_FRIENDLY = False
+
+
 def _block(ex: dict, sets: int, reps: str, rest: str) -> Dict:
+    notes = ex.get("notes", "")
+    if _BEGINNER_FRIENDLY:
+        # Cycle 2: swap in the LLM-authored beginner rephrasing if available.
+        # Falls back silently to the default note if the cache is missing.
+        notes = TIERED_NOTES.get(ex["id"], {}).get("beginner", notes)
     return {
         "name": ex["name"],
         "category": ex["category"],
         "sets": sets,
         "reps": reps,
         "rest": rest,
-        "notes": ex.get("notes", ""),
+        "notes": notes,
     }
 
 
@@ -179,7 +201,13 @@ POSITION_NOTES = {
 }
 
 
-def generate_plan(sport: str, position: str, goal: str, equipment: str) -> Dict:
+def generate_plan(
+    sport: str,
+    position: str,
+    goal: str,
+    equipment: str,
+    beginner_friendly: bool = False,
+) -> Dict:
     """
     Generate a structured weekly S&C plan.
 
@@ -188,6 +216,9 @@ def generate_plan(sport: str, position: str, goal: str, equipment: str) -> Dict:
         position: position string (see POSITION_NOTES)
         goal: one of GOAL_FOCUS keys
         equipment: "bodyweight" | "dumbbells" | "full_gym"
+        beginner_friendly: Cycle 2 toggle. When True, swaps each exercise's
+            coaching note for the LLM-authored beginner rephrasing if one is
+            available in coaching_notes_tiered.json.
 
     Returns:
         A dict with metadata and a list of session dicts.
@@ -201,35 +232,41 @@ def generate_plan(sport: str, position: str, goal: str, equipment: str) -> Dict:
     if equipment not in EQUIPMENT_RANK:
         raise ValueError(f"Unsupported equipment: {equipment}")
 
-    #shared `used` set prevents duplicate exercises within lower-body days
-    lower_used: set = set()
+    global _BEGINNER_FRIENDLY
+    _BEGINNER_FRIENDLY = bool(beginner_friendly)
+    try:
+        # shared `used` set prevents duplicate exercises within lower-body days
+        lower_used: set = set()
 
-    sessions = [
-        _lower_power_day(sport, equipment, goal, lower_used),
-        _upper_day(sport, equipment, goal, set()),
-        _lower_strength_day(sport, equipment, goal, lower_used),
-        _power_agility_day(sport, equipment, goal, set()),
-        _core_day(sport, equipment, goal, set()),
-    ]
+        sessions = [
+            _lower_power_day(sport, equipment, goal, lower_used),
+            _upper_day(sport, equipment, goal, set()),
+            _lower_strength_day(sport, equipment, goal, lower_used),
+            _power_agility_day(sport, equipment, goal, set()),
+            _core_day(sport, equipment, goal, set()),
+        ]
 
-    #If the goal is vertical jump, add n extra plyometric block to day 1.
-    if goal == "vertical_jump":
-        u: set = set()
-        extra = _pick("plyometric", sport, equipment, 4, u)
-        if extra:
-            sessions[0]["exercises"].append(
-                _block(extra[-1], 3, "5", "2 min")
-            )
+        # If the goal is vertical jump, add an extra plyometric block to day 1.
+        if goal == "vertical_jump":
+            u: set = set()
+            extra = _pick("plyometric", sport, equipment, 4, u)
+            if extra:
+                sessions[0]["exercises"].append(
+                    _block(extra[-1], 3, "5", "2 min")
+                )
 
-    return {
-        "sport": sport,
-        "position": position,
-        "goal": goal,
-        "equipment": equipment,
-        "focus_summary": GOAL_FOCUS.get(goal, "Balanced sport-specific S&C programme."),
-        "position_note": POSITION_NOTES.get(position, ""),
-        "sessions": sessions,
-    }
+        return {
+            "sport": sport,
+            "position": position,
+            "goal": goal,
+            "equipment": equipment,
+            "beginner_friendly": _BEGINNER_FRIENDLY,
+            "focus_summary": GOAL_FOCUS.get(goal, "Balanced sport-specific S&C programme."),
+            "position_note": POSITION_NOTES.get(position, ""),
+            "sessions": sessions,
+        }
+    finally:
+        _BEGINNER_FRIENDLY = False
 
 
 if __name__ == "__main__":

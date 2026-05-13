@@ -8,6 +8,21 @@
 </head>
 <body>
 
+    <!-- AUTH STRIP — visible on all main screens -->
+    <div id="auth-strip" class="auth-strip">
+        <div id="auth-strip-anon" class="auth-strip-row">
+            <button id="auth-login-link" class="link-btn">Sign in</button>
+            <span class="auth-strip-sep">·</span>
+            <button id="auth-signup-link" class="link-btn">Create account</button>
+        </div>
+        <div id="auth-strip-user" class="auth-strip-row hidden">
+            <span class="auth-strip-greet">Hi, <strong id="auth-username"></strong></span>
+            <button id="auth-myplans-link" class="link-btn">My plans</button>
+            <span class="auth-strip-sep">·</span>
+            <button id="auth-logout-btn" class="link-btn">Sign out</button>
+        </div>
+    </div>
+
     <!--LANDING SCREEN  -->
     <div id="screen-landing">
         <header class="hero">
@@ -161,9 +176,34 @@
 
             <div id="sessions"></div>
 
+            <!-- Beginner-friendly toggle (Cycle 2) -->
+            <div class="card toggle-card">
+                <label class="toggle-row">
+                    <input type="checkbox" id="beginner-toggle" />
+                    <span>
+                        <strong>Show beginner-friendly explanations</strong>
+                        <p class="muted toggle-help">Plain-language coaching cues, useful if you’re newer to gym training.</p>
+                    </span>
+                </label>
+            </div>
+
             <!-- Action buttons -->
             <div class="plan-actions">
-                <button id="print-btn" class="btn-secondary">&#128438; Print / save plan</button>
+                <button id="save-plan-btn" class="btn-primary">&#128190; Save to my plans</button>
+            </div>
+
+            <!-- Save-plan modal -->
+            <div id="save-modal" class="modal hidden">
+                <div class="modal-card">
+                    <h3>Save this plan</h3>
+                    <p class="muted">Give it a name so you can find it later.</p>
+                    <input type="text" id="save-plan-name" placeholder="e.g. Pre-season block" />
+                    <div class="step-nav">
+                        <button id="save-cancel-btn" class="btn-secondary">Cancel</button>
+                        <button id="save-confirm-btn" class="btn-primary">Save plan</button>
+                    </div>
+                    <p id="save-error" class="error hidden"></p>
+                </div>
             </div>
 
             <!-- Feedback form -->
@@ -198,6 +238,91 @@
         <footer>
             <small>CoachAI prototype &bull; Pawel Sitko &bull; Goldsmiths Final Year Project</small>
         </footer>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="screen-login" class="hidden">
+        <header class="app-header">
+            <h1>CoachAI</h1>
+            <p class="tagline">Sign in to your account</p>
+        </header>
+        <main>
+            <div class="card">
+                <h2>Sign in</h2>
+                <p class="muted">Welcome back.</p>
+
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" autocomplete="email" />
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" autocomplete="current-password" />
+
+                <button id="login-submit" class="btn-primary">Sign in</button>
+                <p id="login-error" class="error hidden"></p>
+
+                <p class="muted auth-switch">
+                    Don’t have an account?
+                    <button class="link-btn" id="login-to-signup">Create one</button>
+                </p>
+                <p class="muted auth-switch">
+                    <button class="link-btn" id="login-to-landing">&larr; Back to home</button>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- SIGNUP SCREEN -->
+    <div id="screen-signup" class="hidden">
+        <header class="app-header">
+            <h1>CoachAI</h1>
+            <p class="tagline">Create an account</p>
+        </header>
+        <main>
+            <div class="card">
+                <h2>Create account</h2>
+                <p class="muted">Save plans across sessions and revisit them on any device.</p>
+
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" autocomplete="email" />
+
+                <label for="signup-name">Display name <span class="optional">(optional)</span></label>
+                <input type="text" id="signup-name" autocomplete="name" />
+
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" autocomplete="new-password" />
+                <p class="muted small-hint">At least 8 characters.</p>
+
+                <button id="signup-submit" class="btn-primary">Create account</button>
+                <p id="signup-error" class="error hidden"></p>
+
+                <p class="muted auth-switch">
+                    Already have an account?
+                    <button class="link-btn" id="signup-to-login">Sign in</button>
+                </p>
+                <p class="muted auth-switch">
+                    <button class="link-btn" id="signup-to-landing">&larr; Back to home</button>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- MY PLANS SCREEN -->
+    <div id="screen-myplans" class="hidden">
+        <header class="app-header">
+            <h1>CoachAI</h1>
+            <p class="tagline">Your saved plans</p>
+        </header>
+        <main>
+            <div class="card">
+                <button id="myplans-back" class="link-btn">&larr; Back to home</button>
+                <h2>My plans</h2>
+                <p class="muted">Tap any plan to open it.</p>
+                <div id="myplans-list"></div>
+                <p id="myplans-empty" class="muted hidden">
+                    You haven’t saved any plans yet. Generate one and tap <strong>Save to my plans</strong>.
+                </p>
+            </div>
+        </main>
     </div>
 
     <script src="app.js"></script>

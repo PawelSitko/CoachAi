@@ -1,0 +1,110 @@
+{
+  "back_squat": {
+    "beginner": "Push through the middle of your feet as you stand up, and keep your chest lifted."
+  },
+  "front_squat": {
+    "beginner": "Keep your chest up and your elbows pointing forward and slightly up. Lower yourself down slowly and with control."
+  },
+  "trap_bar_dl": {
+    "beginner": "Stand up straight, then imagine pushing the ground away with your feet to lift the weight."
+  },
+  "rdl_db": {
+    "beginner": "Bend at your hips like you're trying to touch a wall behind you, keeping a slight bend in your knees."
+  },
+  "bulgarian_split": {
+    "beginner": "Try to keep the front of your lower leg (shin) pointing straight up and down as you squat."
+  },
+  "walking_lunge": {
+    "beginner": "Take a big step forward, and move smoothly and slowly through the exercise."
+  },
+  "goblet_squat": {
+    "beginner": "This exercise is a good way to practice squatting down as low as you can comfortably go."
+  },
+  "reverse_lunge_bw": {
+    "beginner": "Take a big step backward, then lower your back knee toward the floor. Push through the heel of your front foot to stand back up."
+  },
+  "single_leg_glute_bridge": {
+    "beginner": "At the highest point of the movement, really squeeze your butt muscles together."
+  },
+  "step_up_bw": {
+    "beginner": "Stand in front of a strong chair or bench. Step up with one foot, and use that leg to lift your body, not your back foot."
+  },
+  "cossack_squat": {
+    "beginner": "Bend your knees and hips to move your weight to one side, keeping both feet flat on the floor. Then, shift to the other side."
+  },
+  "single_leg_rdl_bw": {
+    "beginner": "Bend at your hips while keeping your back straight, and extend your free leg straight behind you."
+  },
+  "wall_sit": {
+    "beginner": "Sit against the wall as if you're in a chair, with your knees and hips bent at right angles. Stay in this position."
+  },
+  "depth_jump": {
+    "beginner": "Step off the box, then jump as high as you can right when your feet hit the ground. Focus on making each jump good, not just doing many."
+  },
+  "box_jump": {
+    "beginner": "When you step off the box, take a controlled step down instead of jumping."
+  },
+  "broad_jump": {
+    "beginner": "Jump as far as you can, then land softly with your knees bent."
+  },
+  "approach_jump": {
+    "beginner": "Take three steps like you're about to spike a volleyball, and jump as high as you can each time."
+  },
+  "tuck_jump": {
+    "beginner": "Jump up and bring your knees towards your chest. Try to land softly and get back up quickly."
+  },
+  "pogo_jump": {
+    "beginner": "Keep your ankles firm and spring up quickly from the floor."
+  },
+  "lateral_bound": {
+    "beginner": "Push off the ground with the leg that's on the outside of your jump, then land softly and hold your balance."
+  },
+  "skater_jump": {
+    "beginner": "When you land, try to be steady and stop your movement smoothly."
+  },
+  "db_row": {
+    "beginner": "Pull the dumbbell up by bringing your elbow towards your hip, like you're tucking it in."
+  },
+  "barbell_row": {
+    "beginner": "Bend at your hips until your upper body is about halfway down, keeping your back straight and flat."
+  },
+  "face_pull": {
+    "beginner": "This exercise is important for keeping your shoulders healthy, especially if you play sports where you lift your arms overhead a lot."
+  },
+  "inverted_row": {
+    "beginner": "Keep your body in a straight line from head to heels. Pull your chest towards the bar."
+  },
+  "plank": {
+    "beginner": "Tighten your butt muscles and keep your body in a straight line from head to heels, like a board."
+  },
+  "pallof_press": {
+    "beginner": "Keep your body still and don't let the band pull you to the side."
+  },
+  "hanging_leg_raise": {
+    "beginner": "Try to lift your legs up smoothly, without letting your body rock back and forth."
+  },
+  "med_ball_slam": {
+    "beginner": "Reach the ball all the way up, then throw it down to the floor with all your might."
+  },
+  "rotational_throw": {
+    "beginner": "Use your hips to push the ball away from your body."
+  },
+  "calf_raise": {
+    "beginner": "At the highest point of the movement, hold still for a moment before lowering back down."
+  },
+  "nordic_curl": {
+    "beginner": "Slowly lower yourself down, bending at your knees. This helps prevent injuries. Make sure your feet are held securely."
+  },
+  "copenhagen": {
+    "beginner": "This exercise helps make the muscles on the inside of your thighs stronger and more able to handle stress."
+  },
+  "ankle_hops": {
+    "beginner": "Jump up lightly and quickly, trying to spend as little time touching the ground as possible."
+  },
+  "cone_drill": {
+    "beginner": "Step firmly on your outside foot, then push off powerfully in the opposite direction."
+  },
+  "defensive_slide": {
+    "beginner": "Keep your hips down as you slide, and don't cross one foot over the other."
+  }
+}
