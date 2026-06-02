@@ -6,18 +6,10 @@ rephrase the existing coaching note into a beginner-friendly version. Writes
 the result to coaching_notes_tiered.json, which the recommender consults at
 runtime when beginner_friendly=True.
 
-Run this script ONCE during development:
-
-    export GEMINI_API_KEY="your-key-here"
-    python3 build_tiered_notes.py
-
 The runtime application never calls Gemini directly — it only reads the static
 JSON cache. This preserves NFR3 (determinism), NFR5 (offline demoability), and
 keeps the system free to operate.
 
-Safety note: the LLM is constrained to rephrasing the EXISTING coaching note in
-plainer language. It must NOT introduce new exercises, change volumes (sets,
-reps, rest), or invent technique cues. The system prompt enforces this.
 """
 
 from __future__ import annotations
@@ -173,9 +165,6 @@ def call_gemini(model, exercise_name: str, original_note: str, max_retries: int 
     API recommends, and (b) suspiciously short outputs that look truncated.
     Raises on persistent failure or any non-recoverable error.
     """
-    # Slightly assertive prompt to make truncation less likely. The bracketed
-    # "Output the rephrased note as ONE complete sentence" steers the model
-    # away from stopping mid-clause.
     user = (
         f"Exercise: {exercise_name}\n"
         f"Original coaching note: {original_note}\n\n"
